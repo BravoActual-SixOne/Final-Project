@@ -1,0 +1,9 @@
+F:/QT_shit/QT_Projects/ChatFinalProject/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/CMakeFiles/ChatFinalProject.dir
+F:/QT_shit/QT_Projects/ChatFinalProject/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+F:/QT_shit/QT_Projects/ChatFinalProject/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+F:/QT_shit/QT_Projects/ChatFinalProject/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/CMakeFiles/list_install_components.dir
+F:/QT_shit/QT_Projects/ChatFinalProject/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/CMakeFiles/install.dir
+F:/QT_shit/QT_Projects/ChatFinalProject/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/CMakeFiles/install/local.dir
+F:/QT_shit/QT_Projects/ChatFinalProject/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/CMakeFiles/install/strip.dir
+F:/QT_shit/QT_Projects/ChatFinalProject/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/CMakeFiles/ChatFinalProject_autogen_timestamp_deps.dir
+F:/QT_shit/QT_Projects/ChatFinalProject/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/CMakeFiles/ChatFinalProject_autogen.dir

@@ -1,48 +1,48 @@
-Общая архитектура
-Язык: C++17
-Фреймворк: Qt 5/6 (Widgets)
-СУБД: MySQL 
-Сетевой протокол: TCP (stateless, команды через текстовые строки)
-Сборка: CMake и QMake
+Общая архитектура:
+Язык: C++17;
+Фреймворк: Qt 5/6 (Widgets);
+СУБД: MySQL;
+Сетевой протокол: TCP (stateless, команды через текстовые строки);
+Сборка: CMake и QMake.
 
 Client/ — Клиент чата
 Пользовательский интерфейс для регистрации, входа и обмена сообщениями.
 
 Состав:
 
-main.cpp — точка входа, управление окнами
+main.cpp — точка входа, управление окнами;
 
-loginwindow.ui/.h/.cpp — форма входа
+loginwindow.ui/.h/.cpp — форма входа;
 
-registerwindow.ui/.h/.cpp — форма регистрации
+registerwindow.ui/.h/.cpp — форма регистрации;
 
-mainwindow.ui/.h/.cpp — основное окно чата
+mainwindow.ui/.h/.cpp — основное окно чата;
 
-tcpclient.h/.cpp — обёртка над Winsock2 для отправки команд
+tcpclient.h/.cpp — обёртка над Winsock2 для отправки команд;
 
-Принцип работы
+Принцип работы:
 
-При запуске открывается окно входа.
+При запуске открывается окно входа,
 
 Авторизация (login) проверяет пароль и статус (is_banned, is_online).
 
 После входа:
 
-Загружается список пользователей (list_users)
+Загружается список пользователей (list_users),
 
-Общий чат обновляется каждые 3 сек (show_public)
+Общий чат обновляется каждые 3 сек (show_public),
 
-Фоновый таймер проверяет статус (check_status) — при кике/бане окно закрывается
+Фоновый таймер проверяет статус (check_status) — при кике/бане окно закрывается.
 
-Сообщения отправляются командой send
+Сообщения отправляются командой send;
 
 Поддерживается:
 
-Общий чат (to = "ALL")
+Общий чат (to = "ALL"),
 
-Личные сообщения (по nickname)
+Личные сообщения (по nickname),
 
-Чат с самим собой
+Чат с самим собой.
 
 
 Servermonitor — Монитор админа (ServerMonitor)
@@ -51,27 +51,27 @@ Servermonitor — Монитор админа (ServerMonitor)
 
 Состав:
 
-main.cpp — точка входа
+main.cpp — точка входа;
 
-mainwindow.ui/.h/.cpp — таблицы пользователей и сообщений + кнопки управления
+mainwindow.ui/.h/.cpp — таблицы пользователей и сообщений + кнопки управления;
 
-Принцип работы
+Принцип работы:
 
 Автоматически подключается к серверу на 127.0.0.1:7777.
 
 Каждые 3 сек обновляет данные:
 
-admin_list_users → таблица пользователей (id, login, nickname, status, ban)
+admin_list_users → таблица пользователей (id, login, nickname, status, ban),
 
-admin_show_public → таблица всех сообщений
+admin_show_public → таблица всех сообщений.
 
 Управление:
 
-Kick → is_online = 0
+Kick → is_online = 0;
 
-Ban → is_banned = 1
+Ban → is_banned = 1;
 
-Unban → is_banned = 0
+Unban → is_banned = 0;
 
 Все действия подтверждены ответом OK от сервера.
 
@@ -80,15 +80,15 @@ Server/ — Сервер
 TCP-сервер, обрабатывающий команды клиентов и админа.
 
 
-Состав
+Состав:
 
-main.cpp — основной цикл accept() → recv() → обработка → send()
+main.cpp — основной цикл accept() → recv() → обработка → send();
 
-Database.h/.cpp — подключение к MySQL
+Database.h/.cpp — подключение к MySQ;
 
-Chat.h/.cpp — логика работы с пользователями и сообщениями
+Chat.h/.cpp — логика работы с пользователями и сообщениями;
 
-Message.h/ .cpp — системная составляющая сообщений.
+Message.h/ .cpp — системная составляющая сообщений;
 
 Принцип работы:
 
@@ -96,25 +96,25 @@ Stateless: каждый запрос — новое соединение.
 
 Поддерживаемые команды:
 
-register
+register;
 
-login → проверка бана, установка is_online=1
+login → проверка бана, установка is_online=1;
 
-logout → is_online=0
+logout → is_online=0;
 
-send <to_nick|ALL>
+send <to_nick|ALL>;
 
-show_public , show_private
+show_public , show_private;
 
-list_users → все незабаненные (вкл. офлайн)
+list_users → все незабаненные (вкл. офлайн);
 
-check_status → возвращает STATUS:OK/KICKED/BANNED
+check_status → возвращает STATUS:OK/KICKED/BANNED;
 
-admin_* — только для ServerMonitor
+admin_* — только для ServerMonitor;
 
-kick/ban/unban — управление статусами
+kick/ban/unban — управление статусами;
 
-Проверка is_banned и is_online перед каждой операцией.
+Проверка is_banned и is_online перед каждой операцией,
 
 Экранирование SQL-запросов в Chat.cpp.
 
